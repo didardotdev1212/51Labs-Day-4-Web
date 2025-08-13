@@ -3,25 +3,31 @@ import React from "react";
 
 type CardProps = {
   film: {
-    name: string;
-    description: string;
+    Title: string;
+    Year: string;
+    imdbID: string;
+    Type: string;
+    Poster: string;
   };
 };
 
 export default function Card({ film }: CardProps) {
   return (
-    <div className="bg-gray-200 p-4">
+    <div className="bg-gray-200 flex flex-row p-4">
       <Image
-        src="/next.svg"
-        alt={film.name}
+        src={film.Poster}
+        alt={film.Title}
         width={300}
         height={100}
         objectFit="contain"
-        className="mb-2 h-[20px]"
+        className="mb-2 h-[150px] w-1/3"
       />
-
-      <h1>{film.name}</h1>
-      <p className="text-[10px] text-gray-600">{film.description}</p>
+      <div className="flex flex-col justify-center ml-4 w-2/3">
+        <h1>{film.Title}</h1>
+        <p className="text-[10px] text-gray-600">
+          {film.Type} - {film.Year}
+        </p>
+      </div>
     </div>
   );
 }
